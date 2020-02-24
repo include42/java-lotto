@@ -17,7 +17,7 @@ public class LottoGameCount {
     }
 
     public boolean checkLoopTerminate(int count) {
-        return count >= repeat;
+        return count < repeat;
     }
 
     private void validateSplitValue(int repeat) {
