@@ -1,11 +1,11 @@
 package domain;
 
-public class LottoGameCount {
+public class LottoGameRepeat {
     public static final String ERROR_NEGATIVE_MESSAGE = "횟수는 0 이하로 입력될 수 없습니다.";
     public static final String ERROR_OUTBOUND_MESSAGE = "입력은 가능 횟수를 초과할 수 없습니다.";
     private int repeat;
 
-    public LottoGameCount(int repeat) {
+    public LottoGameRepeat(int repeat) {
         validateRepeatCount(repeat);
         this.repeat = repeat;
     }
@@ -26,11 +26,11 @@ public class LottoGameCount {
         }
     }
 
-    public LottoGameCount splitLottoGameCount(int repeat) {
+    public LottoGameRepeat splitLottoGameCount(int repeat) {
         validateRepeatCount(repeat);
         validateSplitValue(repeat);
         this.repeat -= repeat;
-        return new LottoGameCount(repeat);
+        return new LottoGameRepeat(repeat);
     }
 
     @Override

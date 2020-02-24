@@ -29,7 +29,7 @@ public class Money {
         return 100 * earningMoney / money;
     }
 
-    public LottoGameCount calculateGames() {
-        return new LottoGameCount(money / LOTTO_PRICE);
+    public LottoGameRepeat calculateGames() {
+        return new LottoGameRepeat(money / LOTTO_PRICE);
     }
 }

@@ -1,7 +1,7 @@
 package view;
 
 import domain.Money;
-import domain.LottoGameCount;
+import domain.LottoGameRepeat;
 import domain.lottonumber.LottoGame;
 import domain.lottonumber.LottoNumber;
 import domain.lottonumber.LottoTicket;
@@ -37,11 +37,7 @@ public class OutputView {
         System.out.println("\n수동으로 구매할 번호를 입력해 주세요.");
     }
 
-    public static void printRepeat(LottoGameCount repeat) {
-        System.out.println(repeat.toString() + "개를 구매했습니다.");
-    }
-
-    public static void printRepeat(LottoGameCount userRepeat, LottoGameCount autoRepeat) {
+    public static void printRepeat(LottoGameRepeat userRepeat, LottoGameRepeat autoRepeat) {
         System.out.println("수동으로 " + userRepeat.toString() + "장, 자동으로 " + autoRepeat.toString() + "개를 구매했습니다.");
     }
 
@@ -52,33 +48,33 @@ public class OutputView {
     }
 
     private static void printLottoTicket(LottoTicket lottoTicket) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        sb.append(lottoTicket.getLottoNumbers()
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        stringBuilder.append(lottoTicket.getLottoNumbers()
                 .stream()
                 .map(LottoNumber::toString)
                 .collect(Collectors.joining(", "))
         );
-        sb.append("]");
-        System.out.println(sb.toString());
+        stringBuilder.append("]");
+        System.out.println(stringBuilder.toString());
     }
 
     private static void printEachResult(LottoRank rank, ResultCount resultCount) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         if (rank == LottoRank.NOTHING) {
             return;
         }
-        sb.append(rank.getHitCount());
-        sb.append("개 일치");
+        stringBuilder.append(rank.getHitCount());
+        stringBuilder.append("개 일치");
         if (rank.hasBonus()) {
-            sb.append(", 보너스 볼 일치");
+            stringBuilder.append(", 보너스 볼 일치");
         }
-        sb.append("(");
-        sb.append(rank.getWinning());
-        sb.append("원)- ");
-        sb.append(resultCount.toString());
-        sb.append("개");
-        System.out.println(sb.toString());
+        stringBuilder.append("(");
+        stringBuilder.append(rank.getWinning());
+        stringBuilder.append("원)- ");
+        stringBuilder.append(resultCount.toString());
+        stringBuilder.append("개");
+        System.out.println(stringBuilder.toString());
     }
 
     public static void printResult(Money money, LottoResult result) {

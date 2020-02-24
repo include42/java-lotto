@@ -17,30 +17,30 @@ public class LottoController {
         OutputView.printResult(money, makeResult(lottoGame));
     }
 
-    private LottoGame makeLottoGame(LottoGameCount autoGameCount) {
+    private LottoGame makeLottoGame(LottoGameRepeat autoGameRepeat) {
         LottoGame lottoGame = new LottoGame();
-        LottoGameCount userGameCount = autoGameCount.splitLottoGameCount(InputView.inputUserRepeat());
+        LottoGameRepeat userGameRepeat = autoGameRepeat.splitLottoGameCount(InputView.inputUserRepeat());
 
-        OutputView.printRepeat(userGameCount, autoGameCount);
-        makeUserLottoTicket(lottoGame, userGameCount);
-        makeAutoLottoTicket(lottoGame, autoGameCount);
+        OutputView.printRepeat(userGameRepeat, autoGameRepeat);
+        makeUserLottoTicket(lottoGame, userGameRepeat);
+        makeAutoLottoTicket(lottoGame, autoGameRepeat);
         OutputView.printLottoNumbers(lottoGame);
 
         return lottoGame;
     }
 
 
-    private void makeUserLottoTicket(LottoGame lottoGame, LottoGameCount userGameCount) {
+    private void makeUserLottoTicket(LottoGame lottoGame, LottoGameRepeat userGameRepeat) {
         OutputView.printUserLottoNumbersFormat();
-        for (int count = 0; userGameCount.checkLoopTerminate(count); count++) {
+        for (int count = 0; userGameRepeat.checkLoopTerminate(count); count++) {
             UserLottoGenerator userNumberGenerator = new UserLottoGenerator(InputView.inputUserLottoNumbers());
             lottoGame.add(LottoTicketFactory.createLottoNumbers(userNumberGenerator));
         }
     }
 
-    private void makeAutoLottoTicket(LottoGame lottoGame, LottoGameCount autoGameCount) {
+    private void makeAutoLottoTicket(LottoGame lottoGame, LottoGameRepeat autoGameRepeat) {
         LottoGenerator randomLottoGenerator = new RandomLottoGenerator();
-        for (int count = 0; autoGameCount.checkLoopTerminate(count); count++) {
+        for (int count = 0; autoGameRepeat.checkLoopTerminate(count); count++) {
             lottoGame.add(LottoTicketFactory.createLottoNumbers(randomLottoGenerator));
         }
     }
