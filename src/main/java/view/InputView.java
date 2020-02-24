@@ -48,7 +48,6 @@ public class InputView {
     }
 
     public static List<Integer> inputUserLottoNumbers() {
-        OutputView.printUserLottoNumbersFormat();
         try {
             return splitAndParse(scanner.nextLine());
         } catch (NumberFormatException e) {
