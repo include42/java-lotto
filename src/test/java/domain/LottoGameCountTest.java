@@ -22,7 +22,7 @@ public class LottoGameCountTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10,true", "5,true", "0,false"})
+    @CsvSource(value = {"10,false", "5,false", "0,true"})
     void 생성_예외_테스트(int value, boolean exp) {
         LottoGameCount lottoGameCount = new LottoGameCount(5);
         Assertions.assertThat(lottoGameCount.checkLoopTerminate(value)).isEqualTo(exp);
