@@ -20,10 +20,15 @@ public class LottoGameCount {
         return count >= repeat;
     }
 
-    public LottoGameCount splitLottoGameCount(int repeat){
-        if(repeat > this.repeat){
+    private void validateSplitValue(int repeat) {
+        if (repeat > this.repeat) {
             throw new IllegalArgumentException(ERROR_OUTBOUND_MESSAGE);
         }
+    }
+
+    public LottoGameCount splitLottoGameCount(int repeat) {
+        validateRepeatCount(repeat);
+        validateSplitValue(repeat);
         this.repeat -= repeat;
         return new LottoGameCount(repeat);
     }
